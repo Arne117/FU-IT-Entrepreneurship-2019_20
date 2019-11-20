@@ -1,3 +1,5 @@
+/* global Swal */
+
 (function () {
   const doc = document
   const rootEl = doc.documentElement
@@ -10,6 +12,7 @@
 
   window.addEventListener('load', function () {
     body.classList.add('is-loaded')
+    registerListeners()
   })
 
   // Reveal animations
@@ -178,4 +181,48 @@
       }
     )
   })()
+
+  function showModal () {
+    Swal.fire({
+      title: '',
+      // input: 'email',
+      // inputAttributes: {
+      //   autocapitalize: 'off'
+      // },
+      html: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf3bEH33sVgINViRSA0YNZFCIu8mrcAZJODjYT28AY1Zi36TA/viewform?embedded=true" width="auto" height="439" frameborder="0" marginheight="0" marginwidth="0">Wird geladen…</iframe>',
+      showCancelButton: false,
+      showConfirmButton: false,
+      width: '18em',
+      // confirmButtonText: 'Look up',
+      // showLoaderOnConfirm: true,
+      preConfirm: (login) => {
+        // return fetch(`//api.github.com/users/${login}`)
+        //   .then(response => {
+        //     if (!response.ok) {
+        //       throw new Error(response.statusText)
+        //     }
+        //     return response.json()
+        //   })
+        //   .catch(error => {
+        //     Swal.showValidationMessage(
+        //       `Request failed: ${error}`
+        //     )
+        //   })
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      // if (result.value) {
+      //   Swal.fire({
+      //     title: `${result.value.login}'s avatar`,
+      //     imageUrl: result.value.avatar_url
+      //   })
+      // }
+    })
+  }
+
+  function registerListeners () {
+    document.querySelectorAll('.cta').forEach(el => {
+      el.addEventListener('click', showModal)
+    })
+  }
 }())
