@@ -182,7 +182,7 @@
     )
   })()
 
-  function showModal () {
+  function showPreregisterModal () {
     Swal.fire({
       title: '',
       // input: 'email',
@@ -220,9 +220,24 @@
     })
   }
 
+  function showFeedbackModal () {
+    Swal.fire({
+      title: '',
+      html: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSftblKukMqaQkK0t8S-0kukGx3eCDh2LY___K58YxNbMFfleg/viewform?embedded=true" width="auto" height="636" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>',
+      showCancelButton: false,
+      showConfirmButton: false,
+      width: '18em',
+      allowOutsideClick: () => !Swal.isLoading()
+    })
+  }
+
   function registerListeners () {
     document.querySelectorAll('.cta').forEach(el => {
-      el.addEventListener('click', showModal)
+      el.addEventListener('click', showPreregisterModal)
+    })
+
+    document.querySelectorAll('.feedback-cta').forEach(el => {
+      el.addEventListener('click', showFeedbackModal)
     })
   }
 }())
