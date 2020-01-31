@@ -1,7 +1,7 @@
 # IT-Entrepreneurship
 Project files for IT-Entrepreneurship in winter term 2019/2020
 
-Page basded on the Venus landing page template.
+Page based on the Venus landing page template.
 
 * [Getting started](#getting-started)
 
